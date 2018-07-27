@@ -6,12 +6,12 @@
 <link rel="stylesheet" href="janken.css">
 </head>
 <body>
-<div id="title">じゃんけん</div>
+<div id="title">じゃんけんターイム</div>
 <body>
 <hr>
 <table border="0" align="center">
 <tr>
-  <th width="200" height="200"><div id="ahand"></div></th>
+  <th width="200" height="200"><div id="yourhand"></div></th>
 </tr>
 <tr>
   <th>相手</th>
@@ -24,14 +24,14 @@
 </tr>
 <tr>
   <th colspan="3"><form name="janken">
-  <table border="0" align="center" cellpadding="5" cellspacing="5">
-    <tr bgcolor="#000000">
-      <td colspan="3" align="center"><font color="#FFFFFF"><div id="message"></div></font></td>
+  <table border="0" align="center" cellpadding="10" cellspacing="5">
+    <tr>
+      <td colspan="3" align="center"><font color="red"><div id="message"></div></font></td>
     </tr>
     <tr>
-      <th><input type="button" onClick="getbhand(0)" value="ぐー"></th>
-      <th><input type="button" onClick="getbhand(1)" value="ちょき"></th>
-      <th><input type="button" onClick="getbhand(2)" value="ぱー"></th>
+      <th><input type="button" onClick="getbhand(0)" value="グー"></th>
+      <th><input type="button" onClick="getbhand(1)" value="チョキ"></th>
+      <th><input type="button" onClick="getbhand(2)" value="パー"></th>
     </tr>
     <tr>
       <th colspan="3"><input type="button" onClick="handreset()" value="リセット"></th>
@@ -42,10 +42,10 @@
 </table>
 
 <script language="JavaScript">
-hand = new Array("gu.png","tyo.png","pa.png");
-msg = new Array("なにをだそうかな？","勝ちました～！！","負けちゃいました！","あいこだ！");
+hand = new Array("gu.png","tyo.png","pa.png","hatena.jpg");
+msg = new Array("どれ出すの？","勝った～！！","負けちゃった！","あいこだ！");
 
-timer = 0;
+//timer = 0;
 count = 0;
 point = 0;
 handreset();
@@ -55,7 +55,7 @@ function getbhand(btn) {
 	//clearTimeout(timer);
 	//手を出す
 	r = Math.floor(Math.random() * 3);
-	document.getElementById("ahand").innerHTML = "<img src='" + hand[r] + "'>";
+	document.getElementById("yourhand").innerHTML = "<img src='" + hand[r] + "'>";
 	//document.getElementById("bhand").innerHTML = "<img src='" + hand[btn] + "'>";
 	//ボタンを使えなくする
 	//document.janken.elements[0].disabled = true;
@@ -100,9 +100,10 @@ function handreset() {
 	//リセットボタンを使えなくする
 	document.janken.elements[3].disabled = true;
   point=0
+  document.getElementById("yourhand").innerHTML = "<img src='" + hand[3] + "'>";
 	document.getElementById("message").innerHTML = msg[0];
 }
-//timer = setTimeout("getahand()",500);
+//timer = setTimeout("getyourhand()",500);
 </script>
 <!--produced by www.shurey.com-->
 </body>
