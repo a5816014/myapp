@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>じゃんけん</title>
+<link rel="stylesheet" href="janken.css">
+</head>
+<body>
+<div id="title">じゃんけん</div>
+<body>
+<hr>
+<table border="0" align="center">
+<tr>
+  <th width="200" height="200"><div id="ahand"></div></th>
+</tr>
+<tr>
+  <th>相手</th>
+</tr>
+<tr>
+  <th>VS</th>
+</tr>
+<tr>
+  <th>自分</th>
+</tr>
+<tr>
+  <th colspan="3"><form name="janken">
+  <table border="0" align="center" cellpadding="5" cellspacing="5">
+    <tr bgcolor="#000000">
+      <td colspan="3" align="center"><font color="#FFFFFF"><div id="message"></div></font></td>
+    </tr>
+    <tr>
+      <th><input type="button" onClick="getbhand(0)" value="ぐー"></th>
+      <th><input type="button" onClick="getbhand(1)" value="ちょき"></th>
+      <th><input type="button" onClick="getbhand(2)" value="ぱー"></th>
+    </tr>
+    <tr>
+      <th colspan="3"><input type="button" onClick="handreset()" value="リセット"></th>
+    </tr>
+  </table>
+  </form></th>
+  </tr>
+</table>
+
+<script language="JavaScript">
+hand = new Array("gu.png","tyo.png","pa.png");
+msg = new Array("なにをだそうかな？","勝ちました～！！","負けちゃいました！","あいこだ！");
+
+timer = 0;
+count = 0;
+point = 0;
+handreset();
+
+function getbhand(btn) {
+	//タイマーを止める
+	//clearTimeout(timer);
+	//手を出す
+	r = Math.floor(Math.random() * 3);
+	document.getElementById("ahand").innerHTML = "<img src='" + hand[r] + "'>";
+	//document.getElementById("bhand").innerHTML = "<img src='" + hand[btn] + "'>";
+	//ボタンを使えなくする
+	//document.janken.elements[0].disabled = true;
+	//document.janken.elements[1].disabled = true;
+	//document.janken.elements[2].disabled = true;
+	//リセットボタンを元に戻す
+	document.janken.elements[3].disabled = false;
+	//あいこ
+	var num = 3;
+	//グー
+	if (btn == 0 && r == 1) num = 1;
+	if (btn == 0 && r == 2) num = 2;
+	//チョキ
+	if (btn == 1 && r == 0) num = 2;
+	if (btn == 1 && r == 2) num = 1;
+	//パー
+	if (btn == 2 && r == 0) num = 1;
+	if (btn == 2 && r == 1) num = 2;
+
+  if(num==1){
+    point+=1;//num==1勝ち,num==2負け
+  }
+  if(num==2){//ボタンを押せなくする
+    document.janken.elements[0].disabled = true;
+    document.janken.elements[1].disabled = true;
+    document.janken.elements[2].disabled = true;
+  }
+	//表示
+	document.getElementById("message").innerHTML = msg[num];
+  if(num==2){
+    confirm(msg[2]+"あなたがの得点は"+point+"点です。");//ポイントをブラウザで表示
+  }else{
+
+  }
+}
+
+function handreset() {
+	//初期状態に戻す
+	document.janken.elements[0].disabled = false;
+	document.janken.elements[1].disabled = false;
+	document.janken.elements[2].disabled = false;
+	//リセットボタンを使えなくする
+	document.janken.elements[3].disabled = true;
+  point=0
+	document.getElementById("message").innerHTML = msg[0];
+}
+//timer = setTimeout("getahand()",500);
+</script>
+<!--produced by www.shurey.com-->
+</body>
+</html>
