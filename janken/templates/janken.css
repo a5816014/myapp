@@ -1,14 +1,29 @@
-#title{
+{
   font-size: 60px;
+  font-weight: 1000;
   color: orange;
   font-style: italic;
+  
+
+}
+#title{
+padding:0.2em 0.5em;
+background: -moz-linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+background: -webkit-linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+background: linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+color: white;
+font-size: 40px;
+font-weight: 1000;
+box-shadow: 0 0 4px rgba(0, 0, 0, 0.56);
+text-align: center;
 }
 th{
-  font-size:40px;
+  font-size:35px;
 }
 input{
-  font-size:40px;
+  font-size:35px;
 }
-body{
-  background-color: #ffe4e1;
+body.bgjanken{
+background-image:url(ja.png);
+background-color:rgba(255,228,225,0.55);
 }
